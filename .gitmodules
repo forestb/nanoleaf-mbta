@@ -1,0 +1,3 @@
+[submodule "nanoleaf-mbta-secrets"]
+	path = nanoleaf-mbta-secrets
+	url = git@github.com:forestb/nanoleaf-mbta-secrets.git
