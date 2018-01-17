@@ -9,13 +9,13 @@ var Client = require('node-rest-client').Client;
 
 // globals
 // configure fiddler proxy 
-var options_proxy = {
-    proxy: {
-        host: "127.0.0.1",
-        port: 8888,
-        tunnel: false
-    }
-};
+// var options_proxy = {
+//     proxy: {
+//         host: "127.0.0.1",
+//         port: 8888,
+//         tunnel: false
+//     }
+// };
 
 function getFileContents(filename){
     return fs.readFileSync(`./nanoleaf-mbta-secrets/${filename}`, 'utf8', function (err, data) {
@@ -59,7 +59,7 @@ AuroraPanel.prototype.formatForRequest = function() {
 
 // nanoleaf aurora
 var auroraApiKey = getFileContents("api_key_nanoleaf.secret");
-var auroraIpAddress = "192.168.31.118";
+var auroraIpAddress = "192.168.31.103";
 var auroraPort = 16021;
 const auroraUrl_Effects = url.parse(`http://${auroraIpAddress}:${auroraPort}/api/v1/${auroraApiKey}/effects`);
 
@@ -80,7 +80,11 @@ function auroraSetEffects(){
                 animData : animDataValue } }
     };
 
-    new Client(options_proxy).put(auroraUrl_Effects.href, args, function (data, response) {
+    // new Client(options_proxy).put(auroraUrl_Effects.href, args, function (data, response) {
+    //     auroraSetEffectsCallback(data, response);
+    // });
+
+    new Client().put(auroraUrl_Effects.href, args, function (data, response) {
         auroraSetEffectsCallback(data, response);
     });
 }
@@ -96,7 +100,10 @@ const mbtaUrl_PredictionsByRoute = url.parse(`http://realtime.mbta.com/developer
 // mbta functions
 function getPredictionsByRoute(){
     console.log("Checking route predictions...");
-    new Client(options_proxy).get(mbtaUrl_PredictionsByRoute.href,  function (data, response) {
+    // new Client(options_proxy).get(mbtaUrl_PredictionsByRoute.href,  function (data, response) {
+    //     predictionsByRouteRetrieved(data, response);
+    // });
+    new Client().get(mbtaUrl_PredictionsByRoute.href,  function (data, response) {
         predictionsByRouteRetrieved(data, response);
     });
 }
