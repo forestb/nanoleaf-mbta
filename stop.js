@@ -6,7 +6,7 @@ const Client = require('node-rest-client').Client;
 
 const helpers = require('./helpers');
 
-const auroraIpAddress = "192.168.31.134";
+const auroraIpAddress = "192.168.31.119";
 const auroraPort = 16021;
 var auroraApiKey = helpers.getFileContents("nanoleaf-mbta-secrets/api_key_nanoleaf.secret");
 

@@ -22,7 +22,7 @@ const mbtaStopName = "Back of the Hill - Outbound"
 const mbtaUrl_PredictionsByRoute = url.parse(`http://realtime.mbta.com/developer/api/v2/predictionsbyroute?api_key=${mbtaApiKey}&route=${mbtaRouteId}&format=json`);
 
 // nanoleaf aurora
-const auroraIpAddress = "192.168.31.134";
+const auroraIpAddress = "192.168.31.119";
 const auroraPort = 16021;
 var auroraApiKey = helpers.getFileContents("nanoleaf-mbta-secrets/api_key_nanoleaf.secret");
 
